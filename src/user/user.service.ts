@@ -7,13 +7,11 @@ import {hash, genSalt, compare} from 'bcryptjs'
 
 @Injectable()
 export class UserService {
-  constructor(
-    @InjectModel(UserModel) private readonly UserModel: ModelType<UserModel>
-  ) {}
+  constructor(@InjectModel(UserModel) private readonly UserModel: ModelType<UserModel>) {}
 
   async byId(_id: string) {
     const user = await this.UserModel.findById(_id)
-    if (!user) throw new NotFoundException('User not fount')
+    if (!user) throw new NotFoundException('User not found')
     return user
   }
 
@@ -21,8 +19,7 @@ export class UserService {
     const user = await this.byId(_id)
     const isSameUser = await this.UserModel.findOne({email: dto.email})
 
-    if (isSameUser && String(_id) !== String(isSameUser._id))
-      throw new NotFoundException('Email busy')
+    if (isSameUser && String(_id) !== String(isSameUser._id)) throw new NotFoundException('Email busy')
 
     if (dto.password) {
       const salt = await genSalt(10)
@@ -50,10 +47,7 @@ export class UserService {
       ],
     }
 
-    return this.UserModel.find(option)
-      .select('-password -updateAt -_v')
-      .sort({createdAt: 'desc'})
-      .exec()
+    return this.UserModel.find(option).select('-password -updateAt -_v').sort({createdAt: 'desc'}).exec()
   }
 
   async delete(id: string) {

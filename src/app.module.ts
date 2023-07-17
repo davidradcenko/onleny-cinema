@@ -7,6 +7,7 @@ import { getMongoDbConfig } from './config/mongo.config';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { GenreModule } from './genre/genre.module';
+import { FileModule } from './file/file.module';
 
 @Module({
   
@@ -19,7 +20,8 @@ import { GenreModule } from './genre/genre.module';
     }),
     UserModule,
     AuthModule,
-    GenreModule
+    GenreModule,
+    FileModule
     
   ],
   controllers: [AppController],

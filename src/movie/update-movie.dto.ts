@@ -1,15 +1,24 @@
-import {IsArray, IsBoolean, IsObject, IsString} from 'class-validator'
+import {IsArray, IsBoolean, IsNotEmpty, IsObject, IsString, MinLength} from 'class-validator'
+import {Types} from 'mongoose'
 
 export class Parameters {
   @IsString()
   year: number
+
   @IsString()
   duration: number
+
   @IsString()
-  country: number
+  country: string
 }
 
-export class CreateMovieDto {
+export class GenreIdsDto {
+  @IsNotEmpty()
+  @MinLength(24, {each: true})
+  genreIds: Types.ObjectId[]
+}
+
+export class UpdateMovieDto {
   @IsString()
   poster: string
 
@@ -20,17 +29,16 @@ export class CreateMovieDto {
   title: string
 
   @IsString()
-  description: string
-
-  @IsString()
   slug: string
 
   @IsObject()
-  parameters?: string
+  parameters?: Parameters
 
   @IsString()
   videoUrl: string
 
+  // @IsArray()
+  // genres: Types.ObjectId[]
   @IsArray()
   @IsString({each: true})
   genres: string[]
@@ -39,6 +47,5 @@ export class CreateMovieDto {
   @IsString({each: true})
   actors: string[]
 
-  @IsBoolean()
   isSendTelegram?: boolean
 }

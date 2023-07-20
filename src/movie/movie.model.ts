@@ -1,5 +1,6 @@
 import {Ref, prop} from '@typegoose/typegoose'
 import {Base, TimeStamps} from '@typegoose/typegoose/lib/defaultClasses'
+import {Types} from 'mongoose'
 import {ActorModel} from 'src/actor/actor.model'
 import {GenreModel} from 'src/genre/genre.model'
 
@@ -8,10 +9,12 @@ export interface MovieModel extends Base {}
 export class Parameters {
   @prop()
   year: number
+
   @prop()
   duration: number
+
   @prop()
-  country: number
+  country: string
 }
 
 export class MovieModel extends TimeStamps {
@@ -24,14 +27,11 @@ export class MovieModel extends TimeStamps {
   @prop()
   title: string
 
-  @prop()
-  description: string
-
   @prop({unique: true})
   slug: string
 
   @prop()
-  parameters?: string
+  parameters?: Parameters
 
   @prop({default: 4.0})
   rating?: number
@@ -42,6 +42,8 @@ export class MovieModel extends TimeStamps {
   @prop({default: 0})
   countOpened?: number
 
+  // @prop()
+  // genres: Types.ObjectId[]
   @prop({ref: () => GenreModel})
   genres: Ref<GenreModel>[]
 

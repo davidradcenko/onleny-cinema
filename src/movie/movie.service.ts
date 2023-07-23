@@ -24,7 +24,17 @@ export class MovieService {
       .populate('actors genres')
       .exec()
   }
-
+  async updateRating(id: Types.ObjectId, newRating: number) {
+    return this.MovieModel.findByIdAndUpdate(
+      id,
+      {
+        rating: newRating,
+      },
+      {
+        new: true,
+      }
+    ).exec()
+  }
   async bySlug(slug: string) {
     const doc = await this.MovieModel.findOne({slug}).populate('actors genres').exec()
     if (!doc) throw new NotFoundException('Movies not found')

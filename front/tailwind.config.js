@@ -35,7 +35,7 @@ module.exports = {
         layout: '2.75rem',
       },
       fontSize: {
-        '2lg': '128rem',
+        '2lg': '1.38rem',
       },
       borderRadius: {
         image: '0.5rem',

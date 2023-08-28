@@ -1,6 +1,7 @@
 import { IMenu } from "./menu.interface";
 
-const firstMenu:IMenu ={
+
+export const firstMenu:IMenu ={
     title : 'Menu',
     items:[{
         icon:'MdHome',
@@ -29,5 +30,3 @@ export const userMenu: IMenu={
     title:'General',
     items:[]
 }
-
-export const menus:IMenu[] = [firstMenu,userMenu]

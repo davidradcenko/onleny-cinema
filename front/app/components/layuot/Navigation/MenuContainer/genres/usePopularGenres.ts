@@ -18,5 +18,6 @@ export const usePopularGenres =()=>{
             .splice(0,4),
         }
     )
+    
     return queryData
 }

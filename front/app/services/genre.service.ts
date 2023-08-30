@@ -4,7 +4,13 @@ import { axiosClassic } from "api/interceptors"
 import axios from 'axios'
 
 export const GenreService={
-    async getPopularGenres(){
-        return axiosClassic.get<IGenre[]>(getGenresUrl('/popular'))
+    async getALL(searchTerm?:string){
+        return axiosClassic.get<IGenre[]>(getGenresUrl(''),{
+            params:searchTerm
+            ?{
+                searchTerm,
+            }
+            :{},
+        })
     }
 } 

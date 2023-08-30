@@ -4,9 +4,7 @@ import {useQuery} from 'react-query'
 import { IMenuItem } from '../menu.interface'
 
 export const usePopularGenres =()=>{
-    const queryData= useQuery(
-        'popular genre menu',
-        ()=> GenreService.getPopularGenres(),
+    const queryData= useQuery('popular genre menu',()=> GenreService.getALL(),
         {
             select:({data})=>
             data.map((genre)=>({

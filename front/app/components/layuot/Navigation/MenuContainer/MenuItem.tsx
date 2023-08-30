@@ -8,6 +8,7 @@ import MaterialIcon from '@/components/ui/MaterialIcon'
 
 const MenuItem:FC<{item:IMenuItem}> = ({item}) => {
   const {asPath}= useRouter()
+  
   return <li className={cn({
     [styles.active]: asPath === item.link
   })}>

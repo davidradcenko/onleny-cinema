@@ -1,9 +1,12 @@
 import { FC } from "react"
 import styles from './sidebar.module.scss'
+import Search from "./Search/Search"
 
 const Sidebar:FC = () => {
   return (
-    <div>sidebar</div>
+    <div className={styles.sidebar}>
+      <Search/>
+    </div>
   )
 }
 

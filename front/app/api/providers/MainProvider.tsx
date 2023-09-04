@@ -1,3 +1,4 @@
+import Layout from '@/components/layuot/Layout'
 import { FC } from 'react'
 import { QueryClient,QueryClientProvider } from 'react-query'
 
@@ -16,7 +17,7 @@ type Props = {
 const MainProvider:FC<Props> = ({children}) => {
   return (
    <QueryClientProvider  client={queryClient}>
-      {children}
+      <Layout>{children}</Layout>
    </QueryClientProvider> 
   )
 }

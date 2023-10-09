@@ -1,6 +1,6 @@
 import Home from "@/components/screens/home/Home";
 import { NextPage } from "next";
-import '../styles/globals.scss'
+import '@/assets/styles/globals.scss'
 
 
 const  HomePage:NextPage =()=> {

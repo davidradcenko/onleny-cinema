@@ -1,15 +1,15 @@
-import React, { FC, useState } from 'react'
-import { useAuthRedirect } from './useAuthRedirect'
-import { useAuth } from '@/hooks/useAuth'
+import React, { FC, useState } from "react";
+import { useAuthRedirect } from "./useAuthRedirect";
+import { useAuth } from "@/hooks/useAuth";
 
 const Auth: FC = () => {
-    useAuthRedirect()
+  useAuthRedirect();
 
-const {isLoading} = useAuth()
-const [type,setType] = useState<'login' | 'register'>('login')
-  return (
-    <div>Auth</div>
-  )
-}
+  const { isLoading } = useAuth();
 
-export default Auth
+  const [type, setType] = useState<"login" | "register">("login");
+
+  return <div>Auth</div>;
+};
+
+export default Auth;

@@ -5,8 +5,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { IAuthInput } from "./auth.interface";
 import styles from "./Auth.module.scss";
 import Meta from "@/utils/meta/Meta";
-import Heading from "@/components/ui/heading/Heading";
-import Button from "@/components/ui/form-elements/Button";
+import Heading from "@/ui/heading/Heading";
+import Button from "@/ui/form-elements/Button";
 
 const Auth: FC = () => {
   useAuthRedirect();
@@ -36,11 +36,29 @@ const Auth: FC = () => {
     <Meta description="Auth" title="Auth">
       <section className={styles.wrapper}>
         <form onSubmit={handleSubmit(onSubmit)}>
-<Heading title='Auth' className="mb-6"/>
+          <Heading title="Auth" className="mb-6" />
 
-<div className={styles.buttons}>
-  <Button type='submit' onClick={()=>setType('login')} disabled={isLoading}>Login</Button>
-</div>
+          <div className={styles.buttons}>
+
+
+            <Button
+              type="submit"
+              onClick={() => setType("login")}
+              disabled={isLoading}
+            >
+              Login
+            </Button>
+            <Button
+              type="submit"
+              onClick={() => setType("register")}
+              disabled={isLoading}
+            >
+              Register
+            </Button> 
+
+
+
+          </div>
         </form>
       </section>
     </Meta>
